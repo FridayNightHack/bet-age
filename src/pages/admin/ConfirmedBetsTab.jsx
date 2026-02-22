@@ -2,16 +2,7 @@
 import { useState, useEffect } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-  Divider,
-  Paper,
-  Alert,
-} from '@mui/material';
+import { Box, List, ListItem, Typography, Divider, Paper } from '@mui/material';
 
 export default function ConfirmedBetsTab() {
   const [bets, setBets] = useState([]);
@@ -35,7 +26,7 @@ export default function ConfirmedBetsTab() {
       (error) => {
         console.error('Ошибка загрузки ставок:', error);
         setLoading(false);
-      },
+      }
     );
 
     return () => unsubscribe();
@@ -67,7 +58,8 @@ export default function ConfirmedBetsTab() {
                   borderRadius: 1,
                   border: '1px solid',
                   borderColor: 'divider',
-                }}>
+                }}
+              >
                 {/* Контакт */}
                 <Box sx={{ fontWeight: 'bold', color: 'primary.main' }}>
                   {bet.contact.name} — {bet.contact.phone}
@@ -88,7 +80,9 @@ export default function ConfirmedBetsTab() {
                 ))}
 
                 {/* Сумма и выигрыш */}
-                <Box sx={{ fontSize: '0.9rem', color: 'text.secondary', mt: 1 }}>
+                <Box
+                  sx={{ fontSize: '0.9rem', color: 'text.secondary', mt: 1 }}
+                >
                   Jemi: <strong>{bet.betPrice.amount}TMT</strong> | Ýeňiş:{' '}
                   <strong>{bet.betPrice.potentialWin}TMT</strong>
                 </Box>

@@ -1,8 +1,14 @@
 // components/admin/MatchesTab.jsx
 import { useState, useEffect } from 'react';
-import { collection, query, where, orderBy, onSnapshot } from 'firebase/firestore';
+import {
+  collection,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+} from 'firebase/firestore';
 import { db } from '../../lib/firebase';
-import { Box, Button, Alert, Typography, List, ListItem } from '@mui/material';
+import { Box, Button, Typography, List, ListItem } from '@mui/material';
 import AddMatchForm from './AddMatchForm.jsx';
 
 export default function MatchesTab() {
@@ -11,7 +17,11 @@ export default function MatchesTab() {
 
   useEffect(() => {
     const now = new Date();
-    const q = query(collection(db, 'matches'), where('date', '>=', now), orderBy('date', 'asc'));
+    const q = query(
+      collection(db, 'matches'),
+      where('date', '>=', now),
+      orderBy('date', 'asc')
+    );
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const list = snapshot.docs.map((doc) => ({
@@ -30,7 +40,11 @@ export default function MatchesTab() {
       <Box>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
           <Typography variant="h6">Ýaryş goşmak</Typography>
-          <Button variant="contained" color="primary" onClick={() => setShowForm(!showForm)}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setShowForm(!showForm)}
+          >
             {showForm ? 'Aýyrmak' : 'Goşmak'}
           </Button>
         </Box>
@@ -63,7 +77,8 @@ export default function MatchesTab() {
                   borderRadius: 1,
                   border: '1px solid',
                   borderColor: 'divider',
-                }}>
+                }}
+              >
                 <Box>
                   <Typography fontWeight="bold">
                     {match.team1} vs {match.team2}

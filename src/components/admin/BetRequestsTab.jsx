@@ -1,12 +1,17 @@
 // components/admin/BetRequestsTab.jsx
 import { useState, useEffect } from 'react';
-import { collection, getDocs, deleteDoc, doc, addDoc } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  deleteDoc,
+  doc,
+  addDoc,
+} from 'firebase/firestore';
 import { db } from '../../lib/firebase';
 import {
   Box,
   List,
   ListItem,
-  ListItemText,
   Typography,
   Button,
   Divider,
@@ -42,7 +47,8 @@ export default function BetRequestsTab() {
 
   // Подтверждение ставки
   const handleConfirm = async (request) => {
-    if (!window.confirm(`Подтвердить ставку от ${request.contact.name}?`)) return;
+    if (!window.confirm(`Подтвердить ставку от ${request.contact.name}?`))
+      return;
     try {
       // 1. Добавляем в `bets`
       await addDoc(collection(db, 'bets'), {
@@ -90,7 +96,8 @@ export default function BetRequestsTab() {
                   borderRadius: 1,
                   border: '1px solid',
                   borderColor: 'divider',
-                }}>
+                }}
+              >
                 {/* Контакт */}
                 <Box sx={{ fontWeight: 'bold', color: 'primary.main' }}>
                   {req.contact.name} — {req.contact.phone}
@@ -111,13 +118,17 @@ export default function BetRequestsTab() {
                 ))}
 
                 {/* Сумма и выигрыш */}
-                <Box sx={{ fontSize: '0.9rem', color: 'text.secondary', mt: 1 }}>
-                  Jemi: <strong>{req.betPrice.amount}TMT</strong> | Mümkin ýeňiş:{' '}
-                  <strong>{req.betPrice.potentialWin}TMT</strong>
+                <Box
+                  sx={{ fontSize: '0.9rem', color: 'text.secondary', mt: 1 }}
+                >
+                  Jemi: <strong>{req.betPrice.amount}TMT</strong> | Mümkin
+                  ýeňiş: <strong>{req.betPrice.potentialWin}TMT</strong>
                 </Box>
 
                 {/* Дата */}
-                <Box sx={{ fontSize: '0.85rem', color: 'gray', mt: 1 }}>{req.submittedAt}</Box>
+                <Box sx={{ fontSize: '0.85rem', color: 'gray', mt: 1 }}>
+                  {req.submittedAt}
+                </Box>
 
                 {/* Кнопка подтверждения */}
                 <Button
@@ -125,7 +136,8 @@ export default function BetRequestsTab() {
                   variant="contained"
                   color="success"
                   onClick={() => handleConfirm(req)}
-                  sx={{ mt: 2 }}>
+                  sx={{ mt: 2 }}
+                >
                   ✅ Подтвердить
                 </Button>
               </ListItem>

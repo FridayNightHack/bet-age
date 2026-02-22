@@ -1,6 +1,6 @@
 // AdminPanel.jsx
 import { useState } from 'react';
-import { Box, Container, Tabs, Tab, Typography } from '@mui/material';
+import { Container, Tabs, Tab, Typography } from '@mui/material';
 
 import MatchesTab from '../components/admin/MatchesTab';
 import BetRequestsTab from '../components/admin/BetRequestsTab';

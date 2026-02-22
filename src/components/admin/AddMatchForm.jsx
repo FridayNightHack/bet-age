@@ -2,7 +2,13 @@
 import { useState, useMemo } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../lib/firebase';
-import { Autocomplete, TextField, Box, Button, Typography } from '@mui/material';
+import {
+  Autocomplete,
+  TextField,
+  Box,
+  Button,
+  Typography,
+} from '@mui/material';
 import { soccerLeagues } from '../../data/leagues';
 import { teamsByLeague } from '../../data/teamsByLeague';
 
@@ -38,7 +44,7 @@ const AddMatchForm = ({ onClose }) => {
   // Получаем команды текущей лиги
   const leagueTeams = useMemo(() => {
     return teamsByLeague || [];
-  }, [form]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,33 +80,46 @@ const AddMatchForm = ({ onClose }) => {
     <Box
       component="form"
       onSubmit={handleSubmit}
-      sx={{ p: 3, border: '1px solid #ddd', borderRadius: 1, mb: 4 }}>
+      sx={{ p: 3, border: '1px solid #ddd', borderRadius: 1, mb: 4 }}
+    >
       <Typography variant="h6" gutterBottom>
         Täze Oýun goşmak
       </Typography>
 
       {/* Команды */}
-      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2, mb: 2 }}>
+      <Box
+        sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2, mb: 2 }}
+      >
         <Autocomplete
           freeSolo
           options={leagueTeams}
           value={form.team1}
           onChange={(e, value) => setForm({ ...form, team1: value || '' })}
-          onInputChange={(e, newInputValue) => setForm({ ...form, team1: newInputValue })}
-          renderInput={(params) => <TextField {...params} label="Команда 1" required />}
+          onInputChange={(e, newInputValue) =>
+            setForm({ ...form, team1: newInputValue })
+          }
+          renderInput={(params) => (
+            <TextField {...params} label="Команда 1" required />
+          )}
         />
         <Autocomplete
           freeSolo
           options={leagueTeams}
           value={form.team2}
           onChange={(e, value) => setForm({ ...form, team2: value || '' })}
-          onInputChange={(e, newInputValue) => setForm({ ...form, team2: newInputValue })}
-          renderInput={(params) => <TextField {...params} label="Команда 2" required />}
+          onInputChange={(e, newInputValue) =>
+            setForm({ ...form, team2: newInputValue })
+          }
+          renderInput={(params) => (
+            <TextField {...params} label="Команда 2" required />
+          )}
         />
       </Box>
 
       {/* Дата и лига */}
-      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2, mb: 3 }}>
+      <Box
+        sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2, mb: 3 }}
+      >
         <TextField
           name="date"
           type="datetime-local"
@@ -114,9 +133,16 @@ const AddMatchForm = ({ onClose }) => {
           options={soccerLeagues}
           value={form.league}
           onChange={(e, value) => setForm({ ...form, league: value || '' })}
-          onInputChange={(e, newInputValue) => setForm({ ...form, league: newInputValue })}
+          onInputChange={(e, newInputValue) =>
+            setForm({ ...form, league: newInputValue })
+          }
           renderInput={(params) => (
-            <TextField {...params} label="Лига" placeholder="Начните вводить..." required />
+            <TextField
+              {...params}
+              label="Лига"
+              placeholder="Начните вводить..."
+              required
+            />
           )}
         />
       </Box>
@@ -129,7 +155,14 @@ const AddMatchForm = ({ onClose }) => {
       {markets.map((market, marketIndex) => (
         <Box
           key={marketIndex}
-          sx={{ mb: 3, p: 2, bgcolor: '#f9f9f9', borderRadius: 1, border: '1px solid #eee' }}>
+          sx={{
+            mb: 3,
+            p: 2,
+            bgcolor: '#f9f9f9',
+            borderRadius: 1,
+            border: '1px solid #eee',
+          }}
+        >
           {/* Название рынка */}
           <TextField
             fullWidth
@@ -144,14 +177,21 @@ const AddMatchForm = ({ onClose }) => {
           />
 
           {/* Ставки */}
-          <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 1 }}>
+          <Box
+            sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 1 }}
+          >
             {market.bets.map((bet, betIndex) => (
               <Box key={betIndex} sx={{ display: 'flex', gap: 1 }}>
                 <TextField
                   size="small"
                   value={bet.type}
                   onChange={(e) =>
-                    handleMarketChange(marketIndex, betIndex, 'type', e.target.value)
+                    handleMarketChange(
+                      marketIndex,
+                      betIndex,
+                      'type',
+                      e.target.value
+                    )
                   }
                   placeholder="Тип"
                   sx={{ flex: 1 }}
@@ -162,7 +202,12 @@ const AddMatchForm = ({ onClose }) => {
                   size="small"
                   value={bet.odds}
                   onChange={(e) =>
-                    handleMarketChange(marketIndex, betIndex, 'odds', e.target.value)
+                    handleMarketChange(
+                      marketIndex,
+                      betIndex,
+                      'odds',
+                      e.target.value
+                    )
                   }
                   placeholder="1.90"
                   sx={{ flex: 1 }}
@@ -179,7 +224,8 @@ const AddMatchForm = ({ onClose }) => {
               newMarkets[marketIndex].bets.push({ type: 'Новый', odds: '' });
               setMarkets(newMarkets);
             }}
-            sx={{ mt: 1 }}>
+            sx={{ mt: 1 }}
+          >
             + Добавить ставку
           </Button>
         </Box>
@@ -202,12 +248,19 @@ const AddMatchForm = ({ onClose }) => {
         }}
         variant="outlined"
         size="small"
-        sx={{ mb: 3 }}>
+        sx={{ mb: 3 }}
+      >
         + Добавить рынок
       </Button>
 
       {/* Кнопки формы */}
-      <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        fullWidth
+        sx={{ mt: 2 }}
+      >
         ✅ Добавить матч
       </Button>
       <Button type="button" onClick={onClose} fullWidth sx={{ mt: 1 }}>
