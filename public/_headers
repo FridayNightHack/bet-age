@@ -1,0 +1,7 @@
+# public/_headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+
+# Все маршруты → index.html (для SPA)
+/* /index.html 200

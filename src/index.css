@@ -1,0 +1,485 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/Poppins/Poppins-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/Poppins/Poppins-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/Poppins/Poppins-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/Poppins/Poppins-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/Poppins/Poppins-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../public/fonts/Poppins/Poppins-ExtraBold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../public/fonts/Rubik/Rubik-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: url('../public/fonts/Rubik/Rubik-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-light: #ffffff;
+  --color-light-gray: #c4c4c4;
+  --color-orange: #ca5434;
+  --color-dark: #201f20;
+  --color-dark-gray: #2d2c2d;
+  --color-dark-medium: #3f3e3e;
+
+  --sportFootballMain: #57793e;
+
+  --font-family-base: 'Poppins', sans-serif;
+  --font-family-primary: 'Rubik', sans-serif;
+
+  --margin-inline: 9.18rem;
+  --margin-inline-header: 3.43rem;
+
+  --padding-section-block: 2.5rem;
+  --padding-inline-button: 2.5rem;
+
+  --border-radius-button: 0.1rem;
+  --border-radius-button-primary: 1.25rem;
+
+  --container-width: 81.25rem;
+  --container-width-wide: 93.75rem;
+  --container-padding-x: 1rem;
+
+  --header-height: 90px;
+  --input-height: 40px;
+
+  --transition-duration: 0.2s;
+}
+
+/* Кастомный скроллбар */
+::-webkit-scrollbar {
+  width: 10px; /* толщина вертикального скролла */
+  height: 10px; /* толщина горизонтального скролла (редко используется) */
+}
+
+/* Трек (фон) */
+::-webkit-scrollbar-track {
+  background: #121212; /* тёмный фон */
+  border-radius: 6px;
+}
+
+/* Ползунок */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    var(--color-dark-gray),
+    var(--color-dark-medium)
+  ); /* синий градиент */
+  border-radius: 6px;
+  border: 2px solid #121212; /* чтобы не прилипал к краям */
+}
+
+/* Ползунок при наведении */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-orange);
+  cursor: pointer;
+}
+
+/* Уголок (если есть) */
+::-webkit-scrollbar-corner {
+  background: #121212;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-weight: 500;
+  color: var(--color-light);
+  /* background-color: #131115; */
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.container-wide {
+  max-width: calc(var(--container-width-wide) - 2 * var(--container-padding-x));
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  height: 2.375rem;
+  padding-inline: 2.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 2;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+}
+
+.light-button-main {
+  height: 40px;
+  border: 1px solid var(--color-orange);
+  border-radius: var(--border-radius-button);
+  background-color: var(--color-orange);
+  color: var(--color-light);
+  transition: all ease-in-out var(--transition-duration);
+}
+
+.light-button-main:hover {
+  background-color: inherit;
+  color: var(--color-orange);
+}
+
+.light-button-main:active {
+  color: wheat;
+  border-color: wheat;
+  transform: scale(1.1, 1.1);
+}
+
+.light-button-main.is-submit {
+  width: 100%;
+}
+
+.light-button-main.is-submit:active {
+  color: wheat;
+  border-color: wheat;
+  transform: scale(1.05, 1.05);
+}
+
+.rounded {
+  border-radius: 0.5em;
+}
+
+.action-img {
+  width: 1.25rem;
+  object-fit: cover;
+}
+
+.main-content-above {
+  position: relative;
+  padding-right: 1.5rem;
+}
+
+.main-content-above::after,
+.main-content-above::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 12.5rem;
+  height: 1px;
+  background-color: var(--color-light);
+}
+
+.main-content-above::before {
+  top: 50%;
+  right: 100%;
+}
+
+.line-between::before,
+.line-between::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  width: 50%;
+  height: 1px;
+  background-color: var(--color-dark-gray);
+}
+
+.line-between::before {
+  left: -50%;
+}
+
+.line-between::after {
+  right: -50%;
+}
+
+.link-arrow {
+  position: absolute;
+  text-decoration: none;
+  right: 0;
+  color: var(--color-light-gray);
+}
+
+.link-arrow::after {
+  content: '';
+  position: absolute;
+  top: 0%;
+  right: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  background: url('../public/assets/icon/arrow-right-light.png') no-repeat center/contain;
+}
+
+.heading-above {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: calc(var(--padding-section-block) * 2);
+}
+
+.events {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-block: var(--padding-section-block);
+  background-color: var(--color-dark);
+}
+
+.events-bold-title {
+  position: relative;
+  padding-inline: 1rem;
+  font-weight: 600;
+}
+
+.popular-events-list {
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: repeat(4, 21.312rem);
+  grid-template-rows: 1fr;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.popular-events-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: var(--color-dark-gray);
+  border-radius: var(--border-radius-button);
+}
+
+.bet-card {
+  width: 100%;
+  padding-block: 1rem;
+  padding-inline: 1rem;
+  border: 1px solid var(--color-dark-medium);
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bet-card-header {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-light);
+}
+
+.teams {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+
+.team-logo {
+  max-width: 4.625em;
+  aspect-ratio: 1;
+  display: block;
+  object-fit: cover;
+  margin-bottom: 0.5em;
+}
+
+.team-name {
+  text-wrap: nowrap;
+  font-weight: 300;
+}
+
+.vs {
+  font-weight: bold;
+  color: #888;
+  margin: 0 12px;
+  white-space: nowrap;
+}
+
+.rankings-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 2em;
+}
+
+.rankings-list-item:not(:last-child) {
+  border-bottom: var(--color-dark-medium) 1px solid;
+}
+
+.rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-size: 1rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+  background-color: var(--color-dark-medium);
+  width: 2.875em;
+  aspect-ratio: 1;
+  font-weight: bold;
+  color: gold;
+  text-align: center;
+}
+
+.rank::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: -1.5rem; /* Поднимаем корону */
+  left: 50%; /* Центрируем по горизонтали */
+  transform: translateX(-50%); /* Корректируем смещение */
+  background: url('../public/assets/icon/crown.svg') no-repeat center/contain;
+  width: 2.5rem;
+  aspect-ratio: 1;
+}
+
+.contact-link {
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.reverse-card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 0.5rem;
+}
+
+.reverse-card:nth-child(1n + 2) {
+  /* Alternate card layout for visual variety */
+  flex-direction: row-reverse;
+}
+
+.football-card {
+  background: linear-gradient(180deg, rgba(26, 30, 37, 0.6) 0%, rgba(26, 30, 37, 0.32) 100%),
+    var(--sportFootballMain, #619a38);
+}
+
+.accordion-summary:hover span,
+.markets-type:hover .markets-odd {
+  --tw-text-opacity: 1;
+  color: rgb(147 197 253 / var(--tw-text-opacity, 1)) /* #93c5fd */;
+}
+
+@media (max-width: 80rem) {
+  .popular-events-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 53.87rem) {
+  .light-button-main.is-submit {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 37.25rem) {
+  .main-content-above {
+    padding-right: 0;
+    z-index: 1;
+    background-color: transparent;
+    padding-inline: 1rem;
+  }
+
+  .main-content-above::before,
+  .main-content-above::after {
+    width: 100%;
+    transform: scale(1, 1);
+    transition: var(--transition-duration);
+  }
+
+  .main-content-above::after {
+    left: 100%;
+    width: 100%;
+  }
+
+  .main-content-above::before {
+    width: 100%;
+    left: -100%;
+  }
+
+  .popular-events-list {
+    grid-template-columns: repeat(1, 100%);
+  }
+
+  .reverse-card,
+  .reverse-card:nth-child(1n + 2) {
+    flex-direction: column-reverse;
+  }
+}
