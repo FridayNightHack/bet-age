@@ -1,9 +1,10 @@
-import React from 'react';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
 import Home from './pages/Home';
 import App from './App';
 import AllMatchesModal from './components/allMatchesModal';
-import AdminPanel from './pages/AdminPanel';
+import AdminLogin from './pages/admin/auth/adminLogin';
+import AdminPanel from './pages/admin/AdminPanel';
+import RequireAdmin from './components/require-admin/require-admin';
 
 const router = createBrowserRouter([
   {
@@ -24,8 +25,16 @@ const router = createBrowserRouter([
         element: <Navigate to="/" />,
       },
       {
-        path: 'Secret-Bet-Admin-2025',
-        element: <AdminPanel />,
+        path: 'Secret-Bet-Admin',
+        element: <AdminLogin />,
+      },
+      {
+        path: 'admin',
+        element: (
+          <RequireAdmin>
+            <AdminPanel />
+          </RequireAdmin>
+        ),
       },
     ],
   },

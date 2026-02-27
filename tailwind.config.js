@@ -20,6 +20,9 @@ module.exports = {
         primary: "'Rubik', sans-serif",
         segoe: "'Segoe UI', sans-serif",
       },
+      fontSize: {
+        medium: 'clamp(20px,2.66vw,40px)',
+      },
       colors: {
         light: '#ffffff',
         'light-gray': '#C4C4C4',
@@ -41,6 +44,8 @@ module.exports = {
         'max-md': { max: '64rem' },
         'max-sm': { max: '53.87rem' },
         'max-xs': { max: '37.25rem' },
+
+        'min-sm': { min: '53.87rem' },
         custom: '37.25rem',
       },
     },

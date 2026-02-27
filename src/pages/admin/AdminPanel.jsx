@@ -2,9 +2,9 @@
 import { useState } from 'react';
 import { Container, Tabs, Tab, Typography } from '@mui/material';
 
-import MatchesTab from '../components/admin/MatchesTab';
-import BetRequestsTab from '../components/admin/BetRequestsTab';
-import ConfirmedBetsTab from './admin/ConfirmedBetsTab.jsx';
+import MatchesTab from '../../components/admin/MatchesTab';
+import BetRequestsTab from '../../components/admin/BetRequestsTab';
+import ConfirmedBetsTab from './adminData/ConfirmedBetsTab';
 
 export default function AdminPanel() {
   const [tab, setTab] = useState(0);

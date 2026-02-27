@@ -70,18 +70,12 @@ const NavBar = ({ ref }) => {
                 </a>
               </li>
               <li className="max-xs:hidden">
-                <a
-                  href="/"
-                  className={`h-basic relative no-underline items-center px-7 inline-flex hover:text-light-gray`}
-                >
+                <a href="/" className="default-link default-height">
                   Esasy
                 </a>
               </li>
               <li className="max-xs:hidden">
-                <button
-                  onClick={ref}
-                  className={`h-basic relative no-underline items-center px-7 inline-flex hover:text-light-gray`}
-                >
+                <button onClick={ref} className="default-link default-height">
                   Statistika
                 </button>
               </li>

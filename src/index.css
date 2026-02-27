@@ -80,7 +80,7 @@
   --font-family-primary: 'Rubik', sans-serif;
 
   --margin-inline: 9.18rem;
-  --margin-inline-header: 3.43rem;
+  /* --margin-inline-header: 3.43rem; */
 
   --padding-section-block: 2.5rem;
   --padding-inline-button: 2.5rem;
@@ -92,7 +92,7 @@
   --container-width-wide: 93.75rem;
   --container-padding-x: 1rem;
 
-  --header-height: 90px;
+  --header-height: 5.625rem;
   --input-height: 40px;
 
   --transition-duration: 0.2s;
@@ -164,6 +164,23 @@ body {
   clip-path: inset(100%) !important;
   clip: rect(0 0 0 0) !important;
   overflow: hidden !important;
+}
+
+.default-link {
+  display: inline-flex;
+  position: relative;
+  text-decoration: none;
+  align-items: center;
+  padding-inline: 1.75rem;
+}
+
+.default-height {
+  height: var(--header-height);
+}
+
+.default-link:hover {
+  --tw-text-opacity: 1;
+  color: rgb(196 196 196 / var(--tw-text-opacity, 1)) /* #c4c4c4 */;
 }
 
 .button {
@@ -275,7 +292,8 @@ body {
   right: 0;
   width: 100%;
   aspect-ratio: 1;
-  background: url('../public/assets/icon/arrow-right-light.png') no-repeat center/contain;
+  background: url('../public/assets/icon/arrow-right-light.png') no-repeat
+    center/contain;
 }
 
 .heading-above {
@@ -427,7 +445,12 @@ body {
 }
 
 .football-card {
-  background: linear-gradient(180deg, rgba(26, 30, 37, 0.6) 0%, rgba(26, 30, 37, 0.32) 100%),
+  background:
+    linear-gradient(
+      180deg,
+      rgba(26, 30, 37, 0.6) 0%,
+      rgba(26, 30, 37, 0.32) 100%
+    ),
     var(--sportFootballMain, #619a38);
 }
 

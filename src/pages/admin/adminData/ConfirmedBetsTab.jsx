@@ -1,7 +1,7 @@
 // components/admin/ConfirmedBetsTab.jsx
 import { useState, useEffect } from 'react';
 import { collection, onSnapshot } from 'firebase/firestore';
-import { db } from '../../lib/firebase';
+import { db } from '../../../lib/firebase';
 import { Box, List, ListItem, Typography, Divider, Paper } from '@mui/material';
 
 export default function ConfirmedBetsTab() {
