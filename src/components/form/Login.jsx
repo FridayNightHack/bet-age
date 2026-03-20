@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ADMIN_LOGIN, ADMIN_PASSWORD } from '../../pages/admin/auth/adminAuth';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -8,24 +7,33 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // empty fields check
-    if (!login.trim() || !password.trim()) {
-      setError('Please fill in all fields');
-      return;
-    }
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/betage_postreqver`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password, login }),
+        }
+      );
 
-    // wrong credentials check
-    if (login !== ADMIN_LOGIN || password !== ADMIN_PASSWORD) {
-      setError('Wrong credentials');
-      return;
-    }
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(text || `HTTP error: ${response.status}`);
+      }
 
-    if (login === ADMIN_LOGIN && password === ADMIN_PASSWORD) {
-      setError('');
-      localStorage.setItem('isAdmin', 'true');
-      navigate('/admin');
+      const data = await response.json();
+
+      if (data.success) {
+        localStorage.setItem('token', data.token);
+        navigate('/admin');
+      }
+      setError(data.message);
+    } catch (error) {
+      console.error('Server error:', error);
+      setError('Server connection error');
     }
   };
   return (
