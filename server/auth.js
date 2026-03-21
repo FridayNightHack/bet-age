@@ -2,7 +2,7 @@ require('dotenv').config({ path: './server/.env' });
 const cors = require('cors');
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const authenticateToken = require('../src/pages/admin/auth/middleware/middleware');
+const authenticateToken = require('./middleware/middleware');
 
 const app = express();
 
