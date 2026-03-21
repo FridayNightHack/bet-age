@@ -54,7 +54,7 @@ app.post('/betage_postreqver', (req, res) => {
   return res.json({ success: true, token });
 });
 
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT;
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
